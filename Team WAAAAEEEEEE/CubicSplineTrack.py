@@ -31,12 +31,10 @@ def cubic_spline_trackfile(infile, outfile, minute_interval=10):
     # Load the trackfile
     center = pd.read_csv(infile,header=None,names=["Year","Month","Day","Hour","Lat","Long","Min_Pressure","Max_Winds","Unused"],low_memory=False,sep='\t')
     center = center.drop("Unused",axis=1)
-    print(center)
     
     # Prep the data for spline
     temp = center.copy()
     temp = temp.drop_duplicates(subset=['Lat', 'Long'], keep='first') # That way there aren't 2 points in the same location
-    print(temp)
     
     # Make tuples of the data
     myx, myy = temp['Long'],temp['Lat']
@@ -47,7 +45,6 @@ def cubic_spline_trackfile(infile, outfile, minute_interval=10):
     temp['Date'] = (temp['Year'].astype('string')+'-'+temp['Month'].astype('string')+'-'+temp['Day'].astype('string')+'-'+temp['Hour'].astype('string')).apply(pd.to_datetime,format="%Y-%m-%d-%H")
     temp.drop(['Year','Month','Day','Hour'],axis=1,inplace=True)
     temp = temp.sort_values('Date')
-    #print(temp)
     
     # Create the new rows for every 10 minutes
     first_date = temp.iloc[0].Date
