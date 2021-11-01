@@ -2,57 +2,52 @@
 # greatcircle.py
 #-----------------------------------------------------------------------
 
-import stdio
-import sys
+#import stdio
+#import sys
 import math
+def great_circle(lat1, lon1, lat2, lon2): 
+    # Accept float command-line arguments x1, y1, x2, and y2: the latitude
+    # and longitude, in degrees, of two points on the earth. Compute and
+    # write to standard output the great circle distance (in nautical
+    # miles) between those two points.
 
-# Accept float command-line arguments x1, y1, x2, and y2: the latitude
-# and longitude, in degrees, of two points on the earth. Compute and
-# write to standard output the great circle distance (in nautical
-# miles) between those two points.
+    # The following formulas assume that angles are expressed in radians.
+    # So convert to radians.
 
-x1 = float(sys.argv[1])
-y1 = float(sys.argv[2])
-x2 = float(sys.argv[3])
-y2 = float(sys.argv[4])
+    lat1 = math.radians(lat1)
+    lon1 = math.radians(lon1)
+    lat2 = math.radians(lat2)
+    lon2 = math.radians(lon2)
 
-# The following formulas assume that angles are expressed in radians.
-# So convert to radians.
+    # Compute using the law of cosines.
 
-x1 = math.radians(x1)
-y1 = math.radians(y1)
-x2 = math.radians(x2)
-y2 = math.radians(y2)
+    # Great circle distance in radians
+    angle1 = math.acos(math.sin(lat1) * math.sin(lat2) \
+             + math.cos(lat1) * math.cos(lat2) * math.cos(lon1 - lon2))
 
-# Compute using the law of cosines.
+    # Convert back to degrees.
+    angle1 = math.degrees(angle1)
 
-# Great circle distance in radians
-angle1 = math.acos(math.sin(x1) * math.sin(x2) \
-         + math.cos(x1) * math.cos(x2) * math.cos(y1 - y2))
+    # Each degree on a great circle of Earth is 60 nautical miles.
+    distance1 = 60.0 * angle1
 
-# Convert back to degrees.
-angle1 = math.degrees(angle1)
+    return distance1
 
-# Each degree on a great circle of Earth is 60 nautical miles.
-distance1 = 60.0 * angle1
+    # Compute using the Haversine formula.
 
-stdio.writeln(str(distance1) + ' nautical miles')
+    #a = math.sin((lat2-lat1)/2.0) ** 2.0 \
+        #+ (math.cos(lat1) * math.cos(lat2) * (math.sin((lon2-lon1)/2.0) ** 2.0))
 
-# Compute using the Haversine formula.
+    # Great circle distance in radians
+   #angle2 = 2.0 * math.asin(min(1.0, math.sqrt(a)))
 
-a = math.sin((x2-x1)/2.0) ** 2.0 \
-    + (math.cos(x1) * math.cos(x2) * (math.sin((y2-y1)/2.0) ** 2.0))
+    # Convert back to degrees.
+    #angle2 = math.degrees(angle2)
 
-# Great circle distance in radians
-angle2 = 2.0 * math.asin(min(1.0, math.sqrt(a)))
+    # Each degree on a great circle of Earth is 60 nautical miles.
+    #distance2 = 60.0 * angle2
 
-# Convert back to degrees.
-angle2 = math.degrees(angle2)
-
-# Each degree on a great circle of Earth is 60 nautical miles.
-distance2 = 60.0 * angle2
-
-stdio.writeln(str(distance2) + ' nautical miles')
+    #stdio.writeln(str(distance2) + ' nautical miles')
 
 #-----------------------------------------------------------------------
 
