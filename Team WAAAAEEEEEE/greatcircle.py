@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------
 # greatcircle.py
 #-----------------------------------------------------------------------
-
+#(c)2015 Robert Sedgewick, Kevin Wayne, and Robert Dondero
 #import stdio
 #import sys
 import math
