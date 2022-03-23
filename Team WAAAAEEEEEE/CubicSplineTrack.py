@@ -2,23 +2,27 @@
 This code is borrowed from Team Squeem
 """
 
-from IPython.core.display import display, HTML
-display(HTML("<style>.container { width:100% !important; }</style>")) # makes the notebook fill the whole window
+#from IPython.core.display import display, HTML
+#display(HTML("<style>.container { width:100% !important; }</style>")) # makes the notebook fill the whole window
 
-import matplotlib.pyplot as plt, numpy as np, xarray as xr, pandas as pd, datetime
-import matplotlib as mpl
-import matplotlib.patches as patches
-import datetime, os, re, shutil
+#import matplotlib.pyplot as plt
+import numpy as np
+#import xarray as xr
+import pandas as pd
+import datetime
+#import matplotlib as mpl
+#import matplotlib.patches as patches
+import datetime#, os, re, shutil
 
 import pycubicspline
 
-from sklearn.preprocessing import MinMaxScaler
+#from sklearn.preprocessing import MinMaxScaler
 
 #from mpl_toolkits.basemap import Basemap
 
-import matplotlib.image as mpimg
+#import matplotlib.image as mpimg
 
-from glmtools.io.glm import GLMDataset
+#from glmtools.io.glm import GLMDataset
 
 #from squeemtools.Graphing import MakeBigGraph
 
